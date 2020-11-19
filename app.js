@@ -4,7 +4,7 @@ const app = express()
 const port = process.env.PORT || 3030
 const product = require('./models/stock')
 const mongoose = require('mongoose')
-const uri = "mongodb+srv://Bend:TA7tu6jU4p@bender.zavs7.mongodb.net/Inventory?retryWrites=true&w=majority"
+const uri = process.env.DATABASE_URL
 let upload = require('./routes/upload')
 let stockcheck = require('./routes/stockcheck')
 
