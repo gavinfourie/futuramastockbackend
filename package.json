@@ -1,0 +1,21 @@
+{
+  "name": "fbe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gavin Fourie",
+  "license": "ISC",
+  "dependencies": {
+    "convert-excel-to-json": "^1.7.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "formidable": "^1.2.2",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.10.13",
+    "nodemon": "^2.0.6"
+  }
+}
