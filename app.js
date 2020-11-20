@@ -18,7 +18,12 @@ mongoose.connection.on("connected", (err, res) => {
   console.log("mongoose is connected")
 })
 
-app.use(cors())
+let corsOptions = {
+  origin: 'https://futuramastock.herokuapp.com',
+  optionSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use('/upload', upload)
 app.use('/stockcheck', stockcheck)
