@@ -8,8 +8,13 @@ const mongoose = require('mongoose')
 
 router.post('/', async (req, res) => {
   const code = req.body.SKU
-  const found = await product.findOne({ sku: code })
-  res.json(found)
+  const found = null
+  try {
+    const found = await product.findOne({ sku: code })
+    res.json(found)
+  } catch (e) {
+    res.json(e)
+  }
 })
 
 router.post('/single', async (req, res) => {
