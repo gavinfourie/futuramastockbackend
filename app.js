@@ -20,8 +20,7 @@ mongoose.connection.on("connected", (err, res) => {
 
 let corsOptions = {
   origin: "http://futuramastock.herokuapp.com",
-  methods: ['GET', 'PUT', 'POST'],
-  allowedHeaders: ['Content-Type', 'Access-Control-Allow-Origin'],
+  credentials: true,
   optionSuccessStatus: 200
 }
 
