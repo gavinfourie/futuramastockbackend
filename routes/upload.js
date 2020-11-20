@@ -12,18 +12,22 @@ let failedItems = []
 router.post('/excel', async (req, res) => {
   items = []
   const form = new formidable.IncomingForm()
-  form.parse(req, async function(err, fields, files) {
-    let sfile = files.file.path
-    let jfile = xtj({
-      sourceFile: sfile,
-      columnToKey: {
-        '*': '{{columnHeader}}'
-      }
+  try {
+    form.parse(req, async function(err, fields, files) {
+      let sfile = files.file.path
+      let jfile = xtj({
+        sourceFile: sfile,
+        columnToKey: {
+          '*': '{{columnHeader}}'
+        }
+      })
+      await startProcess (jfile)
+      console.log('process done')
     })
-    await startProcess (jfile)
-    console.log('process done')
-  })
-  res.send('done')
+    res.send('done')
+  } catch (e) {
+    res.send(e)
+  }
 })
 
 router.get('/', (req, res) => {
