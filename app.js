@@ -23,6 +23,8 @@ mongoose.connection.on("connected", (err, res) => {
   optionSuccessStatus: 200
 }**/
 
+app.options('*', cors())
+
 app.use(cors())
 app.use(express.json())
 app.use('/upload', upload)
