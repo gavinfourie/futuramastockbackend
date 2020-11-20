@@ -19,7 +19,7 @@ mongoose.connection.on("connected", (err, res) => {
 })
 
 let corsOptions = {
-  origin: "http://futuramastock.herokuapp.com/",
+  origin: "http://futuramastock.herokuapp.com",
   optionSuccessStatus: 200
 }
 
