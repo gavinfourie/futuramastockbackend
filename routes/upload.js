@@ -1,5 +1,4 @@
 let express = require('express')
-const cors = require('cors')
 let router = express.Router()
 let formidable = require('formidable')
 let _ = require('lodash')
@@ -10,15 +9,7 @@ let items = []
 let finalItems = []
 let failedItems = []
 
-let corsOptions = {
-  origin: ['https://futuramastock.herokuapp.com', 'http://futuramastock.herokuapp.com'],
-  methods: ['GET', 'DELETE', 'POST', 'HEAD', 'OPTIONS', 'PUT']
-}
-
-router.use(cors(corsOptions))
-router.options('/excel', cors(corsOptions))
-
-router.post('/excel', cors(corsOptions), async (req, res) => {
+router.post('/excel', async (req, res) => {
   items = []
   const form = new formidable.IncomingForm()
   try {
