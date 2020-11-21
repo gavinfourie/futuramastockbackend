@@ -16,6 +16,7 @@ let corsOptions = {
 }
 
 router.use(cors(corsOptions))
+router.options('*', cors(corsOptions))
 
 router.post('/excel', async (req, res) => {
   items = []
