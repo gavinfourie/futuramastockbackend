@@ -32,6 +32,7 @@ let corsOptions = {
 }
 
 app.use(cors(corsOptions))
+app.options('*', cors())
 app.use(express.json())
 app.use('/upload', upload)
 app.use('/stockcheck', stockcheck)
