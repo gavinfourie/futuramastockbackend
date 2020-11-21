@@ -28,11 +28,12 @@ let corsOptions = {
       callback(new Error('Not allowed by CORS'))
     }
   },
-  methods: ['GET', 'DELETE', 'POST', 'HEAD', 'OPTIONS', 'PUT']
+  methods: ['GET', 'DELETE', 'POST', 'HEAD', 'OPTIONS', 'PUT'],
+  allowedHeaders: ['Content-Type', 'Origin']
 }
 
 app.use(cors(corsOptions))
-app.options('/upload/excel', cors(corsOptions))
+app.options('*', cors(corsOptions))
 app.use(express.json())
 app.use('/upload', upload)
 app.use('/stockcheck', stockcheck)
