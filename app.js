@@ -18,7 +18,7 @@ mongoose.connection.on("connected", (err, res) => {
   console.log("mongoose is connected")
 })
 
-let whitelist = ['https://futuramastock.herokuapp.com', 'http://futuramastock.herokuapp.com']
+let whitelist = ['https://futuramastock.herokuapp.com', 'http://futuramastock.herokuapp.com/']
 
 let corsOptions = {
   origin: function (origin, callback) {
@@ -28,8 +28,7 @@ let corsOptions = {
       callback(new Error('Not allowed by CORS'))
     }
   },
-  methods: ['GET', 'DELETE', 'POST', 'HEAD', 'OPTIONS', 'PUT'],
-  allowedHeaders: ['Content-Type', 'Origin', 'Access-Control-Allow-Origin']
+  methods: ['GET', 'DELETE', 'POST', 'HEAD', 'OPTIONS', 'PUT']
 }
 
 app.use(cors(corsOptions))
