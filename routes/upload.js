@@ -18,7 +18,7 @@ let corsOptions = {
 router.use(cors(corsOptions))
 router.options('/excel', cors(corsOptions))
 
-router.post('/excel', async (req, res) => {
+router.post('/excel', cors(corsOptions), async (req, res) => {
   items = []
   const form = new formidable.IncomingForm()
   try {
