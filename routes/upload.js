@@ -1,4 +1,5 @@
 let express = require('express')
+const cors = require('cors')
 let router = express.Router()
 let formidable = require('formidable')
 let _ = require('lodash')
@@ -9,7 +10,7 @@ let items = []
 let finalItems = []
 let failedItems = []
 
-router.post('/excel', async (req, res) => {
+router.post('/excel', cors(), async (req, res) => {
   items = []
   const form = new formidable.IncomingForm()
   try {
