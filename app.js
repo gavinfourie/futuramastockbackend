@@ -29,11 +29,10 @@ let corsOptions = {
     }
   },
   methods: ['GET', 'DELETE', 'POST', 'HEAD', 'OPTIONS', 'PUT'],
-  optionSuccessStatus: 200,
-  preflightContinue: true
+  optionSuccessStatus: 200
 }
 
-app.options('*', cors(corsOptions))
+app.options('/upload/excel', cors(corsOptions))
 
 app.use(cors(corsOptions))
 app.use(express.json())
