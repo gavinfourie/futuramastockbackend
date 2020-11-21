@@ -29,7 +29,7 @@ let corsOptions = {
     }
   },
   methods: ['GET', 'DELETE', 'POST', 'HEAD', 'OPTIONS', 'PUT'],
-  allowedHeaders: ['Content-Type', 'Origin']
+  allowedHeaders: ['Content-Type', 'Origin', 'Access-Control-Allow-Origin']
 }
 
 app.use(cors(corsOptions))
