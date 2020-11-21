@@ -28,8 +28,7 @@ let corsOptions = {
       callback(new Error('Not allowed by CORS'))
     }
   },
-  methods: ['GET', 'DELETE', 'POST', 'HEAD', 'OPTIONS', 'PUT'],
-  optionSuccessStatus: 200
+  methods: ['GET', 'DELETE', 'POST', 'HEAD', 'OPTIONS', 'PUT']
 }
 
 app.use(cors(corsOptions))
