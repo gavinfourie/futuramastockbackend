@@ -29,7 +29,8 @@ let corsOptions = {
     }
   },
   methods: ['GET', 'DELETE', 'POST', 'HEAD', 'OPTIONS', 'PUT'],
-  optionSuccessStatus: 200
+  optionSuccessStatus: 200,
+  preflightContinue: true
 }
 
 app.options('*', cors(corsOptions))
