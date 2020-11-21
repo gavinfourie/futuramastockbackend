@@ -32,7 +32,12 @@ let corsOptions = {
   optionSuccessStatus: 200
 }
 
-app.options('/upload/excel', cors(corsOptions))
+app.options('*', cors(corsOptions))
+
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'https://futuramastock.herokuapp.com, http://futuramastock.herokuapp.com')
+  next()
+})
 
 app.use(cors(corsOptions))
 app.use(express.json())
