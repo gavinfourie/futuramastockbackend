@@ -13,8 +13,7 @@ let corsOptions = {
   credentials: true
 }
 
-app.options('*', cors(corsOptions))
-app.post('*', cors(corsOptions))
+app.post('/upload/excel', cors(corsOptions))
 
 app.use(cors(corsOptions))
 
@@ -32,7 +31,7 @@ mongoose.connection.on("connected", (err, res) => {
 })
 
 app.use(express.json())
-app.use('/upload', cors(corsOptions), upload)
+app.use('/upload', upload)
 app.use('/stockcheck', stockcheck)
 
 app.listen(port, () => {
