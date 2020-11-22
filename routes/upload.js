@@ -18,7 +18,7 @@ router.post('/excel', upload.single('excelFile'), async (req, res, next) => {
   let jfile = xtj({
     sourceFile: sfile,
     columnToKey: {
-      '*': '{{ columnHeader }}'
+      '*': '{{columnHeader}}'
     }
   })
   console.log(jfile)
