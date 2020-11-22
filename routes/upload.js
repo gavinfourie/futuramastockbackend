@@ -15,23 +15,15 @@ router.post('/excel', upload.single('excelFile'), async (req, res, next) => {
   console.log(req.file.path)
   items = []
   let sfile = req.file.path
-  const form = new formidable.IncomingForm()
-  try {
-    form.parse(req, async function(err, fields, files) {
-      let sfile = files.file.path
-      let jfile = xtj({
-        sourceFile: sfile,
-        columnToKey: {
-          '*': '{{columnHeader}}'
-        }
-      })
-      await startProcess (jfile)
-      console.log('process done')
-    })
-    res.send('done')
-  } catch (e) {
-    res.send(e)
-  }
+  let jfile = xtj({
+    sourceFile: sfile,
+    columnToKey: {
+      '*': '{{ columnHeader }}'
+    }
+  })
+  await startProcess (jfile)
+  console.log('process done')
+  res.send('done')
 })
 
 router.get('/', (req, res) => {
