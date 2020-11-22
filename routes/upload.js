@@ -11,8 +11,7 @@ let items = []
 let finalItems = []
 let failedItems = []
 
-router.post('/excel', upload.single('excelFile'), async (req, res, next) => {
-  console.log(req.file)
+router.post('/excel', upload.single('excelFile'), (req, res, next) => {
   items = []
   let sfile = req.file.path
   let jfile = xtj({
@@ -21,9 +20,7 @@ router.post('/excel', upload.single('excelFile'), async (req, res, next) => {
       '*': '{{columnHeader}}'
     }
   })
-  console.log(jfile)
-  await startProcess (jfile)
-  console.log('process done')
+  startProcess (jfile)
   res.send('done')
 })
 
@@ -50,6 +47,7 @@ async function startProcess (file) {
       }
     }
   }
+  console.log('Process done')
 }
 
 async function startDelete () {
