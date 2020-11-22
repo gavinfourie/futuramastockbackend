@@ -32,13 +32,14 @@ router.post('/single', async (req, res) => {
 
 router.post('/addsingle', async (req, res) => {
   const code = req.body.sku
+  let codeUse = _.toUpper(code)
   const description = req.body.description
   const stock = req.body.quantity
   const price = req.body.price
   const eta = req.body.eta
   const alt = req.body.alt
   let d = new Date()
-  await product.update({ sku: code }, {
+  await product.update({ sku: codeUse }, {
     description: description, quantity: stock, price: price, eta: eta, alt: alt, lastupdate: d
   }, { upsert: true })
   res.send('done')
