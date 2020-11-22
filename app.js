@@ -13,8 +13,7 @@ let corsOptions = {
   credentials: true
 }
 
-app.post('/upload/excel', cors(corsOptions))
-
+app.options('*', cors())
 app.use(cors(corsOptions))
 
 let upload = require('./routes/upload')
