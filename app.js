@@ -14,6 +14,7 @@ let corsOptions = {
 }
 
 app.options('*', cors(corsOptions))
+app.post('*', cors(corsOptions))
 
 app.use(cors(corsOptions))
 
