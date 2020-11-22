@@ -12,8 +12,9 @@ let finalItems = []
 let failedItems = []
 
 router.post('/excel', upload.single('excelFile'), async (req, res, next) => {
-  console.log(req.file)
+  console.log(req.file.path)
   items = []
+  let sfile = req.file.path
   const form = new formidable.IncomingForm()
   try {
     form.parse(req, async function(err, fields, files) {
