@@ -1,6 +1,8 @@
 let express = require('express')
 let router = express.Router()
 let formidable = require('formidable')
+let multer = require('multer')
+let upload = multer({ dest: 'uploads/' })
 let _ = require('lodash')
 const xtj = require('convert-excel-to-json')
 const product = require('../models/stock')
@@ -45,20 +47,17 @@ router.post('/addsingle', async (req, res) => {
   res.send('done')
 })
 
-router.post('/multiple', async (req, res) => {
+router.post('/multiple', upload.single('excelSearchFile'), async (req, res, next) => {
   let items = []
-  const form = new formidable.IncomingForm()
-  form.parse(req, async function(err, fields, files) {
-    let sfile = files.file.path
-    let jfile = xtj({
-      sourceFile: sfile,
-      columnToKey: {
-        '*': '{{columnHeader}}'
-      }
-    })
-    const returnedItems = await startFind(jfile)
-    res.send(returnedItems)
+  let sfile = req.file.path
+  let jfile = xtj({
+    sourceFile: sfile,
+    columnToKey: {
+      '*': '{{columnHeader}}'
+    }
   })
+  const returnedItems = await startFind(jfile)
+  res.send(returnedItems)
 })
 
 async function startFind (book) {
