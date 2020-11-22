@@ -32,7 +32,7 @@ mongoose.connection.on("connected", (err, res) => {
 })
 
 app.use(express.json())
-app.use('/upload', upload)
+app.use('/upload', cors(corsOptions), upload)
 app.use('/stockcheck', stockcheck)
 
 app.listen(port, () => {
