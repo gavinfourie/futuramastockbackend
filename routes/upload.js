@@ -9,7 +9,7 @@ let items = []
 let finalItems = []
 let failedItems = []
 
-router.post('/excel', async (req, res, next) => {
+router.post('/excel', async (req, res) => {
   items = []
   const form = new formidable.IncomingForm()
   try {
