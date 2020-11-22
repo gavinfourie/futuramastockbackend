@@ -1,6 +1,8 @@
 let express = require('express')
 let router = express.Router()
 let formidable = require('formidable')
+let multer = require('multer')
+let upload = multer({ dest: 'uploads/' })
 let _ = require('lodash')
 const xtj = require('convert-excel-to-json')
 const product = require('../models/stock')
@@ -9,7 +11,8 @@ let items = []
 let finalItems = []
 let failedItems = []
 
-router.post('/excel', async (req, res) => {
+router.post('/excel', upload.single('excelFile'), async (req, res, next) => {
+  console.log(req.file)
   items = []
   const form = new formidable.IncomingForm()
   try {
