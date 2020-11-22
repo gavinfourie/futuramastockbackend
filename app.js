@@ -9,8 +9,7 @@ const uri = process.env.DATABASE_URL
 let corsOptions = {
   origin: ['https://futuramastock.herokuapp.com', 'http://futuramastock.herokuapp.com'],
   methods: ['GET', 'DELETE', 'POST', 'HEAD', 'OPTIONS', 'PUT'],
-  allowedHeaders: ['Access-Control-Allow-Origin', 'Content-Type', 'Origin', 'X-Requested-With'],
-  credentials: true
+  allowedHeaders: ['Access-Control-Allow-Origin', 'Content-Type', 'Origin', 'X-Requested-With']
 }
 
 app.options('*', cors())
